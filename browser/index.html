@@ -5,7 +5,16 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="stylesheet" type="text/css" href="style.css"></link>
         <script type="text/javascript" src="KRPC.js" ></script>
-        <script defer="defer" type="text/javascript" src="index.js" ></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Blank Template for Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="style.css" rel="stylesheet">
     </head>
     <body>
         <p>Time: <span id="time"></span></p>
@@ -13,5 +22,60 @@
         <p>Altitude (Lowest Point): <span id="altitude2"></span></p>
         <p>Situation: <span id="situation"></span></p>
         <p>Speed: <span id="speed"></span></p>
+        <div class="container" id="app">
+            <div id="accordion" role="tablist">
+                <div class="card" v-for="part,index in parts">
+                    <div class="card-header" role="tab" v-bind:id="'header'+index">
+                        <h5 class="mb-0"> <a data-toggle="collapse" v-bind:href="'#part_'+index" aria-expanded="true" v-bind:aria-controls="index">
+         {{part.title}} </a> </h5>
+                    </div>
+                    <div v-bind:id="'part_'+index" class="collapse show" role="tabpanel" v-bind:aria-labelledby="'header'+index" data-parent="#accordion">
+                        <div class="card-body">
+                            <div v-for="m,mi in part.modules">
+                                <p v-for="f,j in m.fields">
+                     {{j}}: {{f}} </p>
+                                <button class="btn btn-dark" v-on:click="triggerEvent(m,event,index,mi)" v-for="event in m.events">
+                                    {{event}}
+</button>
+                                <button class="btn btn-dark" v-on:click="triggerAction(m,action,index,mi)" v-for="action in m.actions">
+                                    {{action}}
+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2 </a> </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingThree">
+                        <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3 </a> </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <script type="text/javascript" src="index.js" ></script>
+
     </body>
 </html>
